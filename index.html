@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklist Marketing Mayo–Junio 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:        #0F0E0C;
+  --paper:      #F7F4EE;
+  --paper-2:    #EEEAE1;
+  --paper-3:    #E5E0D5;
+  --line:       #D9D4C7;
+  --line-light: #EAE6DC;
+  --muted:      #8C8779;
+  --muted-2:    #B0AAA0;
+
+  --cat-ia:    #1A3A5C;
+  --cat-cont:  #2D5A3A;
+  --cat-score: #5C2A1A;
+  --cat-seo:   #1A4A4A;
+  --cat-sem:   #3A1A5C;
+  --cat-email: #5C451A;
+
+  --imp-alto:  #C0392B;
+  --imp-med:   #D68910;
+  --imp-bajo:  #7F8C8D;
+
+  --fac-facil: #1E8449;
+  --fac-mod:   #2471A3;
+  --fac-dif:   #C0392B;
+
+  --done-bg:  #F0EDE6;
+  --check:    #1E8449;
+
+  --r: 8px;
+  --r-sm: 5px;
+}
+
+body {
+  font-family: 'Lora', serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 0 0 6rem;
+}
+
+/* ── HERO HEADER ─────────────────────────────── */
+.hero {
+  background: var(--ink);
+  padding: 3rem 2.5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: 'H1';
+  position: absolute;
+  right: -0.02em;
+  top: -0.15em;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(8rem, 20vw, 14rem);
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: rgba(255,255,255,0.3);
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 600px;
+}
+.hero h1 span {
+  color: rgba(255,255,255,0.45);
+  font-weight: 400;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.85em;
+}
+.hero-meta {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hero-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 99px;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.07);
+}
+
+/* ── PROGRESS BAR ─────────────────────────────── */
+.progress-strip {
+  background: var(--ink);
+  padding: 0 2.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.prog-bar-wrap {
+  flex: 1;
+  height: 3px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.prog-bar-fill {
+  height: 100%;
+  background: #fff;
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+.prog-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.prog-pct {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  white-space: nowrap;
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── MAIN CONTENT ─────────────────────────────── */
+.main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 0;
+}
+
+/* ── STATS ROW ─────────────────────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 2.5rem;
+}
+@media(max-width: 560px) { .stats { grid-template-columns: repeat(2,1fr); } }
+.stat {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 14px 16px;
+}
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.stat-value {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--ink);
+  line-height: 1;
+}
+.stat-value.green { color: var(--check); }
+.stat-sub { font-size: 11px; color: var(--muted); margin-top: 2px; font-family: 'DM Mono', monospace; }
+
+/* ── FILTERS ─────────────────────────────── */
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.filter-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-right: 2px;
+}
+.filter-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 5px 13px;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.filter-btn:hover { border-color: var(--ink); color: var(--ink); background: var(--paper-2); }
+.filter-btn.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ── CATEGORY BLOCKS ─────────────────────────────── */
+.category {
+  margin-bottom: 2px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: #fff;
+}
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+  border-bottom: 1px solid transparent;
+}
+.cat-header:hover { background: var(--paper); }
+.category.open .cat-header { border-bottom-color: var(--line-light); }
+
+.cat-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cat-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  flex: 1;
+}
+.cat-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.cat-prog-wrap {
+  width: 60px; height: 3px;
+  background: var(--line-light);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.cat-prog-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.cat-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  min-width: 34px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.cat-chevron {
+  font-size: 14px;
+  color: var(--muted-2);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.category.open .cat-chevron { transform: rotate(180deg); }
+
+.cat-body { display: none; }
+.category.open .cat-body { display: block; }
+
+/* ── TASK ROW ─────────────────────────────── */
+.task {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 11px 18px;
+  border-top: 1px solid var(--line-light);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.task:hover { background: var(--paper); }
+.task.done { background: var(--done-bg); }
+
+.cb {
+  width: 17px; height: 17px;
+  border: 1.5px solid var(--line);
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.task:hover .cb { border-color: var(--muted); }
+.cb.ck { background: var(--check); border-color: var(--check); }
+.cb.ck::after {
+  content: '';
+  display: block;
+  width: 9px; height: 5px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg) translate(1px,-1px);
+}
+
+.task-body { flex: 1; min-width: 0; }
+.task-title {
+  font-family: 'Lora', serif;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  transition: color 0.15s;
+}
+.task.done .task-title {
+  color: var(--muted-2);
+  text-decoration: line-through;
+  text-decoration-color: var(--line);
+}
+
+.task-tags {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  margin-top: 5px;
+}
+.tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.tag-pe  { background: #FDE8E8; color: #7A1A1A; }
+.tag-co  { background: #FDF0E4; color: #7A3A0A; }
+.tag-cl  { background: #E8EFF9; color: #1B3A6B; }
+.tag-all { background: #EDEAE3; color: #4A4640; }
+.tag-alto { background: #FDEDED; color: var(--imp-alto); }
+.tag-med  { background: #FDF3E3; color: var(--imp-med);  }
+.tag-bajo { background: #EDEAE3; color: var(--muted);    }
+.tag-facil { background: #E8F5ED; color: var(--fac-facil); }
+.tag-mod   { background: #E8F0FB; color: var(--fac-mod);   }
+.tag-dif   { background: #FDEDED; color: var(--fac-dif);   }
+
+.task-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: var(--muted-2);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.task-date::before {
+  content: '';
+  width: 12px; height: 1px;
+  background: var(--line);
+  flex-shrink: 0;
+}
+.task.done .task-date { opacity: 0.4; }
+
+.task-right {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  padding-top: 1px;
+}
+.task-owner {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted-2);
+  white-space: nowrap;
+}
+
+/* ── EMPTY ─────────────────────────────── */
+.empty {
+  display: none;
+  text-align: center;
+  padding: 3rem 1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── FOOTER ─────────────────────────────── */
+.footer {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer-txt {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+.legend {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.leg {
+  display: flex; align-items: center; gap: 5px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+.leg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── ANIMATIONS ─────────────────────────────── */
+.category { animation: fadeUp 0.3s ease both; }
+.category:nth-child(1) { animation-delay: 0.05s; }
+.category:nth-child(2) { animation-delay: 0.10s; }
+.category:nth-child(3) { animation-delay: 0.15s; }
+.category:nth-child(4) { animation-delay: 0.20s; }
+.category:nth-child(5) { animation-delay: 0.25s; }
+.category:nth-child(6) { animation-delay: 0.30s; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── TABS ─────────────────────────────── */
+.tab-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 2.5rem;
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.tab-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 11px 20px 10px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.38);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: rgba(255,255,255,0.7); }
+.tab-btn.active { color: #fff; border-bottom-color: #fff; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── GANTT ─────────────────────────────── */
+#gantt-panel {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+.gantt-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.gantt-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+}
+.gantt-legend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.gleg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+.gleg-dot {
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.gleg-done    { background: #1E8449; }
+.gleg-ontrack { background: #2471A3; }
+.gleg-late    { background: #C0392B; }
+.gleg-future  { background: var(--line); }
+.gleg-today   { background: #E67E22; width: 2px; height: 14px; border-radius: 1px; }
+
+/* status bar */
+.status-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.status-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 5px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+.chip-done    { background: #EBF5EE; color: #1E5631; border-color: #A9DFBF; }
+.chip-ontrack { background: #EBF3FB; color: #1B3A6B; border-color: #AED6F1; }
+.chip-late    { background: #FDEDEC; color: #7B241C; border-color: #F1948A; }
+.chip-future  { background: var(--paper-2); color: var(--muted); }
+.chip-today   { background: #FEF5E7; color: #784212; border-color: #FAD7A0; font-weight: 500; }
+
+/* Gantt grid */
+.gantt-grid {
+  position: relative;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: #fff;
+}
+.gantt-months {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.gantt-task-col {
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 8px 14px;
+  border-right: 1px solid var(--line);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: sticky;
+  left: 0;
+  background: var(--paper-2);
+  z-index: 11;
+}
+.gantt-timeline-header {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+}
+.gantt-month-block {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-align: center;
+  padding: 8px 0;
+  border-right: 1px solid var(--line-light);
+  flex-shrink: 0;
+}
+
+/* category group header */
+.gantt-cat-row {
+  display: flex;
+  align-items: center;
+  background: var(--paper-2);
+  border-top: 1px solid var(--line);
+}
+.gantt-cat-label {
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 7px 14px;
+  border-right: 1px solid var(--line);
+  position: sticky;
+  left: 0;
+  background: var(--paper-2);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.gantt-cat-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.gantt-cat-spacer {
+  flex: 1;
+  height: 100%;
+}
+
+/* task row */
+.gantt-row {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--line-light);
+  transition: background 0.12s;
+  min-height: 38px;
+}
+.gantt-row:hover { background: var(--paper); }
+.gantt-row.done-row { opacity: 0.55; }
+
+.gantt-row-label {
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--ink);
+  padding: 6px 14px 6px 20px;
+  border-right: 1px solid var(--line-light);
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 4;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.gantt-row:hover .gantt-row-label { background: var(--paper); }
+.gantt-row.done-row .gantt-row-label { text-decoration: line-through; color: var(--muted-2); background: var(--done-bg); }
+.gantt-row.done-row:hover .gantt-row-label { background: var(--done-bg); }
+
+.gantt-timeline {
+  flex: 1;
+  position: relative;
+  min-height: 38px;
+  min-width: 0;
+}
+
+/* day-grid lines (rendered by JS) */
+.gantt-day-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* today line */
+.today-line {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: #E67E22;
+  opacity: 0.8;
+  z-index: 3;
+  pointer-events: none;
+}
+.today-line::before {
+  content: 'hoy';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: #E67E22;
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* bar */
+.gantt-bar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 16px;
+  border-radius: 3px;
+  z-index: 2;
+  transition: height 0.15s, opacity 0.15s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-width: 4px;
+}
+.gantt-bar:hover { height: 20px; opacity: 0.92; }
+.gantt-bar-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,0.9);
+  padding: 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bar-done    { background: #1E8449; }
+.bar-ontrack { background: #2471A3; }
+.bar-late    { background: #C0392B; }
+.bar-future  { background: var(--paper-3); border: 1px solid var(--line); }
+.bar-future .gantt-bar-label { color: var(--muted); }
+
+/* tooltip */
+.gantt-tooltip {
+  position: fixed;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  line-height: 1.55;
+  pointer-events: none;
+  z-index: 9999;
+  max-width: 260px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+.gantt-tooltip.visible { opacity: 1; }
+.tt-title { font-family: 'Lora', serif; font-size: 12px; margin-bottom: 4px; color: #fff; }
+.tt-row { display: flex; justify-content: space-between; gap: 12px; color: rgba(255,255,255,0.65); }
+.tt-status { font-weight: 500; }
+.tt-done    { color: #58D68D; }
+.tt-ontrack { color: #85C1E9; }
+.tt-late    { color: #F1948A; }
+.tt-future  { color: var(--muted-2); }
+
+/* month bg alternation */
+.month-bg-odd  { background: rgba(0,0,0,0.012); }
+.month-bg-even { background: transparent; }
+
+
+/* ── PASSWORD LOCK ─────────────────── */
+#lock-screen {
+  position: fixed;
+  inset: 0;
+  background: #0F0E0C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  flex-direction: column;
+  gap: 0;
+}
+.lock-box {
+  width: 100%;
+  max-width: 380px;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lock-icon {
+  font-size: 28px;
+  margin-bottom: 28px;
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+}
+.lock-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.lock-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+.lock-input-wrap {
+  width: 100%;
+  position: relative;
+  margin-bottom: 14px;
+}
+#lock-input {
+  width: 100%;
+  padding: 13px 48px 13px 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.18s;
+}
+#lock-input:focus { border-color: rgba(255,255,255,0.45); }
+#lock-input.shake {
+  animation: shake 0.35s ease;
+  border-color: #C0392B !important;
+}
+#lock-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255,255,255,0.35);
+  font-size: 16px;
+  padding: 4px;
+  transition: color 0.15s;
+  line-height: 1;
+}
+#lock-toggle:hover { color: rgba(255,255,255,0.7); }
+#lock-btn {
+  width: 100%;
+  padding: 13px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  background: #fff;
+  color: #0F0E0C;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+#lock-btn:hover { opacity: 0.88; }
+#lock-btn:active { transform: scale(0.98); }
+#lock-error {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #F1948A;
+  margin-top: 12px;
+  letter-spacing: 0.05em;
+  height: 16px;
+  text-align: center;
+}
+#lock-footer {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.18);
+  margin-top: 40px;
+  letter-spacing: 0.06em;
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-8px); }
+  40%      { transform: translateX(8px); }
+  60%      { transform: translateX(-5px); }
+  80%      { transform: translateX(5px); }
+}
+#app-content { display: none; }
+
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lock-screen">
+  <div class="lock-box">
+    <div class="lock-icon">🔒</div>
+    <div class="lock-title">Acceso restringido</div>
+    <div class="lock-sub">Checklist Marketing · Mayo–Jun 2026</div>
+    <div class="lock-input-wrap">
+      <input type="password" id="lock-input" placeholder="Contraseña" autocomplete="off" />
+      <button id="lock-toggle" type="button" title="Mostrar/ocultar">👁</button>
+    </div>
+    <button id="lock-btn" type="button">Entrar →</button>
+    <div id="lock-error"></div>
+    <div id="lock-footer">Solo acceso autorizado</div>
+  </div>
+</div>
+
+<!-- APP CONTENT -->
+<div id="app-content">
+
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Horizonte 1</div>
+  <h1>Acciones inmediatas <span>de Marketing</span></h1>
+  <div class="hero-meta">
+    <span class="hero-chip">Mayo – Junio 2026</span>
+    <span class="hero-chip">28 tareas</span>
+    <span class="hero-chip">6 categorías</span>
+    <span class="hero-chip">Chile · Colombia · Perú</span>
+  </div>
+</div>
+<div class="progress-strip">
+  <div class="prog-bar-wrap"><div class="prog-bar-fill" id="gbar"></div></div>
+  <span class="prog-label" id="gcnt">0 / 28 completadas</span>
+  <span class="prog-pct" id="gpct">0%</span>
+</div>
+<!-- TAB NAV -->
+<div class="tab-nav">
+  <button class="tab-btn active" data-tab="checklist">☑ Checklist</button>
+  <button class="tab-btn" data-tab="gantt">◫ Gantt</button>
+</div>
+
+<div id="checklist-panel" class="tab-panel active"><div class="main">
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Tareas totales</div>
+      <div class="stat-value" id="stot">28</div>
+      <div class="stat-sub">horizonte 1</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Completadas</div>
+      <div class="stat-value green" id="sdon">0</div>
+      <div class="stat-sub">confirmadas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Impacto alto</div>
+      <div class="stat-value" id="salt">—</div>
+      <div class="stat-sub">tareas críticas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Periodo</div>
+      <div class="stat-value" style="font-size:18px; line-height:1.2;">May–Jun</div>
+      <div class="stat-sub">2026</div>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filter-row">
+    <span class="filter-lbl">Ver</span>
+    <button class="filter-btn on"  data-f="all">Todas</button>
+    <button class="filter-btn" data-f="pe">🇵🇪 Perú</button>
+    <button class="filter-btn" data-f="co">🇨🇴 Colombia</button>
+    <button class="filter-btn" data-f="cl">🇨🇱 Chile</button>
+    <button class="filter-btn" data-f="all-countries">🌎 Todos los países</button>
+    <button class="filter-btn" data-f="alto">Impacto alto</button>
+    <button class="filter-btn" data-f="pend">Pendientes</button>
+  </div>
+
+  <!-- ══════════════ IA ══════════════ -->
+  <div class="category open" data-cat="IA" id="cat-IA">
+    <div class="cat-header" onclick="toggleCat('IA')">
+      <div class="cat-dot" style="background:var(--cat-ia)"></div>
+      <span class="cat-name" style="color:var(--cat-ia)">IA</span>
+      <span class="cat-count" id="cc-IA">1 tarea</span>
+      <div class="cat-prog-wrap"><div class="cat-prog-fill" id="cp-IA" style="width:0%;background:var(--cat-ia)"></div></div>
+      <span class="cat-pct" id="cpct-IA" style="color:var(--cat-ia)">0%</span>
+      <span class="cat-chevron">▾</span>
+    </div>
+    <div class="cat-body">
+      <div class="task" data-cat="IA" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Pagar Claude AI</div>
+          <div class="task-tags">
+            <span class="tag tag-all">Todos los países</span>
+            <span class="tag tag-alto">Alto</span>
+            <span class="tag tag-facil">Fácil</span>
+          </div>
+          <div class="task-date">28 May → 05 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ CONTENIDOS ══════════════ -->
+  <div class="category open" data-cat="CONT" id="cat-CONT">
+    <div class="cat-header" onclick="toggleCat('CONT')">
+      <div class="cat-dot" style="background:var(--cat-cont)"></div>
+      <span class="cat-name" style="color:var(--cat-cont)">Contenidos</span>
+      <span class="cat-count" id="cc-CONT">1 tarea</span>
+      <div class="cat-prog-wrap"><div class="cat-prog-fill" id="cp-CONT" style="width:0%;background:var(--cat-cont)"></div></div>
+      <span class="cat-pct" id="cpct-CONT" style="color:var(--cat-cont)">0%</span>
+      <span class="cat-chevron">▾</span>
+    </div>
+    <div class="cat-body">
+      <div class="task" data-cat="CONT" data-p="all" data-i="bajo" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Entrega de Formato Ideas Contenidos al equipo Comercial</div>
+          <div class="task-tags">
+            <span class="tag tag-all">Todos los países</span>
+            <span class="tag tag-bajo">Bajo</span>
+            <span class="tag tag-facil">Fácil</span>
+          </div>
+          <div class="task-date">01 Jun → 03 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SCORE LEADS ══════════════ -->
+  <div class="category open" data-cat="SCORE" id="cat-SCORE">
+    <div class="cat-header" onclick="toggleCat('SCORE')">
+      <div class="cat-dot" style="background:var(--cat-score)"></div>
+      <span class="cat-name" style="color:var(--cat-score)">Score Leads</span>
+      <span class="cat-count" id="cc-SCORE">6 tareas</span>
+      <div class="cat-prog-wrap"><div class="cat-prog-fill" id="cp-SCORE" style="width:0%;background:var(--cat-score)"></div></div>
+      <span class="cat-pct" id="cpct-SCORE" style="color:var(--cat-score)">0%</span>
+      <span class="cat-chevron">▾</span>
+    </div>
+    <div class="cat-body">
+      <div class="task" data-cat="SCORE" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Diseño de Precalificación</div>
+          <div class="task-tags">
+            <span class="tag tag-all">Todos los países</span>
+            <span class="tag tag-alto">Alto</span>
+            <span class="tag tag-dif">Difícil</span>
+          </div>
+          <div class="task-date">28 May → 29 May 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing / Ops</span></div>
+      </div>
+      <div class="task" data-cat="SCORE" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Reunión de levantamiento Lógica</div>
+          <div class="task-tags">
+            <span class="tag tag-all">Todos los países</span>
+            <span class="tag tag-alto">Alto</span>
+            <span class="tag tag-mod">Moderado</span>
+          </div>
+          <div class="task-date">28 May → 29 May 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Comercial</span></div>
+      </div>
+      <div class="task" data-cat="SCORE" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Implementación de Lógica Forms</div>
+          <div class="task-tags">
+            <span class="tag tag-all">Todos los países</span>
+            <span class="tag tag-alto">Alto</span>
+            <span class="tag tag-dif">Difícil</span>
+          </div>
+          <div class="task-date">28 May → 07 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Ops / CRM</span></div>
+      </div>
+      <div class="task" data-cat="SCORE" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Reunión con Leo para Automatizar Lógica</div>
+          <div class="task-tags">
+            <span class="tag tag-all">Todos los países</span>
+            <span class="tag tag-alto">Alto</span>
+            <span class="tag tag-mod">Moderado</span>
+          </div>
+          <div class="task-date">29 May → 07 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Ops / Dev</span></div>
+      </div>
+      <div class="task" data-cat="SCORE" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Implementar Códigos UTM en Canales</div>
+          <div class="task-tags">
+            <span class="tag tag-all">Todos los países</span>
+            <span class="tag tag-alto">Alto</span>
+            <span class="tag tag-mod">Moderado</span>
+          </div>
+          <div class="task-date">28 May → 05 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing / Ops</span></div>
+      </div>
+      <div class="task" data-cat="SCORE" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Implementar diferenciador WhatsApp de todos los canales</div>
+          <div class="task-tags">
+            <span class="tag tag-all">Todos los países</span>
+            <span class="tag tag-alto">Alto</span>
+            <span class="tag tag-facil">Fácil</span>
+          </div>
+          <div class="task-date">28 May → 05 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Ops / CRM</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SEO ══════════════ -->
+  <div class="category open" data-cat="SEO" id="cat-SEO">
+    <div class="cat-header" onclick="toggleCat('SEO')">
+      <div class="cat-dot" style="background:var(--cat-seo)"></div>
+      <span class="cat-name" style="color:var(--cat-seo)">SEO</span>
+      <span class="cat-count" id="cc-SEO">10 tareas</span>
+      <div class="cat-prog-wrap"><div class="cat-prog-fill" id="cp-SEO" style="width:0%;background:var(--cat-seo)"></div></div>
+      <span class="cat-pct" id="cpct-SEO" style="color:var(--cat-seo)">0%</span>
+      <span class="cat-chevron">▾</span>
+    </div>
+    <div class="cat-body">
+      <div class="task" data-cat="SEO" data-p="pe" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Investigación de palabras clave — Perú</div>
+          <div class="task-tags"><span class="tag tag-pe">🇵🇪 Perú</span><span class="tag tag-alto">Alto</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">28 May → 05 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEO" data-p="co" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Investigación de palabras clave — Colombia</div>
+          <div class="task-tags"><span class="tag tag-co">🇨🇴 Colombia</span><span class="tag tag-alto">Alto</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">28 May → 05 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEO" data-p="cl" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Investigación de palabras clave — Chile</div>
+          <div class="task-tags"><span class="tag tag-cl">🇨🇱 Chile</span><span class="tag tag-alto">Alto</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">28 May → 05 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEO" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Optimización On-Page (títulos, meta-descripciones, encabezados)</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-alto">Alto</span><span class="tag tag-facil">Fácil</span></div>
+          <div class="task-date">28 May → 08 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEO" data-p="pe" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Creación de 2 artículos con IA — Perú</div>
+          <div class="task-tags"><span class="tag tag-pe">🇵🇪 Perú</span><span class="tag tag-alto">Alto</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">28 May → 08 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEO" data-p="co" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Creación de 2 artículos con IA — Colombia</div>
+          <div class="task-tags"><span class="tag tag-co">🇨🇴 Colombia</span><span class="tag tag-alto">Alto</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">28 May → 08 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEO" data-p="cl" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Creación de 2 artículos con IA — Chile</div>
+          <div class="task-tags"><span class="tag tag-cl">🇨🇱 Chile</span><span class="tag tag-alto">Alto</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">28 May → 08 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEO" data-p="all" data-i="med" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Optimización de imágenes y multimedia</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-med">Medio</span><span class="tag tag-facil">Fácil</span></div>
+          <div class="task-date">05 Jun → 08 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEO" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Programación de Contenido</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-alto">Alto</span><span class="tag tag-facil">Fácil</span></div>
+          <div class="task-date">05 Jun → 09 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEO" data-p="all" data-i="med" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Monitoreo con Google Search Console y Analytics</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-med">Medio</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">08 Jun → 09 Jul 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SEM ══════════════ -->
+  <div class="category open" data-cat="SEM" id="cat-SEM">
+    <div class="cat-header" onclick="toggleCat('SEM')">
+      <div class="cat-dot" style="background:var(--cat-sem)"></div>
+      <span class="cat-name" style="color:var(--cat-sem)">SEM</span>
+      <span class="cat-count" id="cc-SEM">7 tareas</span>
+      <div class="cat-prog-wrap"><div class="cat-prog-fill" id="cp-SEM" style="width:0%;background:var(--cat-sem)"></div></div>
+      <span class="cat-pct" id="cpct-SEM" style="color:var(--cat-sem)">0%</span>
+      <span class="cat-chevron">▾</span>
+    </div>
+    <div class="cat-body">
+      <div class="task" data-cat="SEM" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Definición de objetivos y segmentación de audiencia</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-alto">Alto</span><span class="tag tag-dif">Difícil</span></div>
+          <div class="task-date">01 Jun → 08 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEM" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Creación de campañas en Google Ads</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-alto">Alto</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">08 Jun → 15 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEM" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Redacción de anuncios atractivos</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-alto">Alto</span><span class="tag tag-dif">Difícil</span></div>
+          <div class="task-date">08 Jun → 15 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEM" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Redireccionar presupuesto de META a Google Ads</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-alto">Alto</span><span class="tag tag-facil">Fácil</span></div>
+          <div class="task-date">08 Jun → 15 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEM" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Configuración de pujas y presupuesto</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-alto">Alto</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">08 Jun → 15 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing / Dir.</span></div>
+      </div>
+      <div class="task" data-cat="SEM" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Creación de Landing Nueva Lógica</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-alto">Alto</span><span class="tag tag-dif">Difícil</span></div>
+          <div class="task-date">08 Jun → 12 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Dev / Marketing</span></div>
+      </div>
+      <div class="task" data-cat="SEM" data-p="all" data-i="alto" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Optimización de landing pages</div>
+          <div class="task-tags"><span class="tag tag-all">Todos los países</span><span class="tag tag-alto">Alto</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">14 Jun → 17 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing / Dev</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ EMAIL ══════════════ -->
+  <div class="category open" data-cat="EMAIL" id="cat-EMAIL">
+    <div class="cat-header" onclick="toggleCat('EMAIL')">
+      <div class="cat-dot" style="background:var(--cat-email)"></div>
+      <span class="cat-name" style="color:var(--cat-email)">Email Marketing</span>
+      <span class="cat-count" id="cc-EMAIL">3 tareas</span>
+      <div class="cat-prog-wrap"><div class="cat-prog-fill" id="cp-EMAIL" style="width:0%;background:var(--cat-email)"></div></div>
+      <span class="cat-pct" id="cpct-EMAIL" style="color:var(--cat-email)">0%</span>
+      <span class="cat-chevron">▾</span>
+    </div>
+    <div class="cat-body">
+      <div class="task" data-cat="EMAIL" data-p="pe" data-i="med" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Envío 1 — SRC Mailing Perú</div>
+          <div class="task-tags"><span class="tag tag-pe">🇵🇪 Perú</span><span class="tag tag-med">Medio</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">03 Jun → 05 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="EMAIL" data-p="pe" data-i="med" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Envío 2 — SRC Mailing Perú</div>
+          <div class="task-tags"><span class="tag tag-pe">🇵🇪 Perú</span><span class="tag tag-med">Medio</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">08 Jun → 10 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+      <div class="task" data-cat="EMAIL" data-p="pe" data-i="med" onclick="toggleTask(this)">
+        <div class="cb"></div>
+        <div class="task-body">
+          <div class="task-title">Envío 3 — SRC Mailing Perú</div>
+          <div class="task-tags"><span class="tag tag-pe">🇵🇪 Perú</span><span class="tag tag-med">Medio</span><span class="tag tag-mod">Moderado</span></div>
+          <div class="task-date">10 Jun → 13 Jun 2026</div>
+        </div>
+        <div class="task-right"><span class="task-owner">Marketing</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty" id="emsg">No hay tareas con ese filtro.</div>
+
+  <footer class="footer">
+    <div class="footer-txt">Horizonte 1 · Mayo–Junio 2026 · 28 tareas</div>
+    <div class="legend">
+      <div class="leg"><div class="leg-dot" style="background:var(--imp-alto)"></div>Impacto alto</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--imp-med)"></div>Impacto medio</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--fac-facil)"></div>Fácil</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--fac-mod)"></div>Moderado</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--fac-dif)"></div>Difícil</div>
+    </div>
+  </footer>
+</div>
+
+
+</div></div><!-- /checklist-panel -->
+
+<!-- GANTT PANEL -->
+<div id="gantt-panel" class="tab-panel">
+  <div id="gantt-panel-inner"></div>
+</div>
+
+<!-- TOOLTIP -->
+<div class="gantt-tooltip" id="gtt"></div>
+
+<script>
+  const CATS = ['IA','CONT','SCORE','SEO','SEM','EMAIL'];
+  const TOTAL = document.querySelectorAll('.task').length;
+  document.getElementById('stot').textContent = TOTAL;
+  document.getElementById('gcnt').textContent = '0 / ' + TOTAL + ' completadas';
+  document.getElementById('salt').textContent = document.querySelectorAll('.task[data-i="alto"]').length;
+
+  function toggleCat(id) {
+    document.getElementById('cat-' + id).classList.toggle('open');
+  }
+
+  function toggleTask(el) {
+    el.classList.toggle('done');
+    el.querySelector('.cb').classList.toggle('ck');
+    updateAll();
+  }
+
+  function updateAll() {
+    const done = document.querySelectorAll('.task.done').length;
+    const pct = TOTAL ? Math.round(done / TOTAL * 100) : 0;
+    document.getElementById('gbar').style.width = pct + '%';
+    document.getElementById('gcnt').textContent = done + ' / ' + TOTAL + ' completadas';
+    document.getElementById('gpct').textContent = pct + '%';
+    document.getElementById('sdon').textContent = done;
+
+    CATS.forEach(function(cat) {
+      const all = document.querySelectorAll('.task[data-cat="' + cat + '"]');
+      const d   = document.querySelectorAll('.task[data-cat="' + cat + '"].done');
+      const visible = Array.from(all).filter(function(t){ return t.style.display !== 'none'; });
+      const p = all.length ? Math.round(d.length / all.length * 100) : 0;
+      document.getElementById('cp-'   + cat).style.width = p + '%';
+      document.getElementById('cpct-' + cat).textContent = p + '%';
+      // update count to visible
+      const vc = visible.length;
+      document.getElementById('cc-' + cat).textContent = vc + (vc === 1 ? ' tarea' : ' tareas');
+    });
+  }
+
+  function applyFilter(f) {
+    let vis = 0;
+    document.querySelectorAll('.task').forEach(function(t) {
+      let show = false;
+      if (f === 'all')          show = true;
+      else if (f === 'pe')      show = t.dataset.p === 'pe';
+      else if (f === 'co')      show = t.dataset.p === 'co';
+      else if (f === 'cl')      show = t.dataset.p === 'cl';
+      else if (f === 'all-countries') show = t.dataset.p === 'all';
+      else if (f === 'alto')    show = t.dataset.i === 'alto';
+      else if (f === 'pend')    show = !t.classList.contains('done');
+      t.style.display = show ? 'flex' : 'none';
+      if (show) vis++;
+    });
+
+    CATS.forEach(function(cat) {
+      const catEl = document.getElementById('cat-' + cat);
+      const any = Array.from(catEl.querySelectorAll('.task')).some(function(t){ return t.style.display !== 'none'; });
+      catEl.style.display = any ? '' : 'none';
+      if (any && f !== 'all') catEl.classList.add('open');
+    });
+
+    document.getElementById('emsg').style.display = vis === 0 ? 'block' : 'none';
+    updateAll();
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('on'); });
+      btn.classList.add('on');
+      applyFilter(btn.dataset.f);
+    });
+  });
+
+  updateAll();
+
+/* ══════════════════════════════════════════════════════
+   GANTT ENGINE
+══════════════════════════════════════════════════════ */
+(function() {
+
+  /* ─── data ─────────────────────────────────────────── */
+  var TASKS = [
+    { cat:'IA',    color:'#1A3A5C', title:'Pagar Claude AI',                                        start:'2026-05-28', end:'2026-06-05', p:'all',  i:'alto', id:'t0'  },
+    { cat:'CONT',  color:'#2D5A3A', title:'Entrega Formato Ideas Contenidos',                       start:'2026-06-01', end:'2026-06-03', p:'all',  i:'bajo', id:'t1'  },
+    { cat:'SCORE', color:'#5C2A1A', title:'Diseño de Precalificación',                              start:'2026-05-28', end:'2026-05-29', p:'all',  i:'alto', id:'t2'  },
+    { cat:'SCORE', color:'#5C2A1A', title:'Reunión levantamiento Lógica',                           start:'2026-05-28', end:'2026-05-29', p:'all',  i:'alto', id:'t3'  },
+    { cat:'SCORE', color:'#5C2A1A', title:'Implementación de Lógica Forms',                        start:'2026-05-28', end:'2026-06-07', p:'all',  i:'alto', id:'t4'  },
+    { cat:'SCORE', color:'#5C2A1A', title:'Reunión con Leo — Automatizar Lógica',                  start:'2026-05-29', end:'2026-06-07', p:'all',  i:'alto', id:'t5'  },
+    { cat:'SCORE', color:'#5C2A1A', title:'Implementar Códigos UTM en Canales',                    start:'2026-05-28', end:'2026-06-05', p:'all',  i:'alto', id:'t6'  },
+    { cat:'SCORE', color:'#5C2A1A', title:'Diferenciador WhatsApp de todos los canales',           start:'2026-05-28', end:'2026-06-05', p:'all',  i:'alto', id:'t7'  },
+    { cat:'SEO',   color:'#1A4A4A', title:'Investigación palabras clave — Perú',                   start:'2026-05-28', end:'2026-06-05', p:'pe',   i:'alto', id:'t8'  },
+    { cat:'SEO',   color:'#1A4A4A', title:'Investigación palabras clave — Colombia',               start:'2026-05-28', end:'2026-06-05', p:'co',   i:'alto', id:'t9'  },
+    { cat:'SEO',   color:'#1A4A4A', title:'Investigación palabras clave — Chile',                  start:'2026-05-28', end:'2026-06-05', p:'cl',   i:'alto', id:'t10' },
+    { cat:'SEO',   color:'#1A4A4A', title:'Optimización On-Page',                                  start:'2026-05-28', end:'2026-06-08', p:'all',  i:'alto', id:'t11' },
+    { cat:'SEO',   color:'#1A4A4A', title:'2 Artículos IA — Perú',                                 start:'2026-05-28', end:'2026-06-08', p:'pe',   i:'alto', id:'t12' },
+    { cat:'SEO',   color:'#1A4A4A', title:'2 Artículos IA — Colombia',                             start:'2026-05-28', end:'2026-06-08', p:'co',   i:'alto', id:'t13' },
+    { cat:'SEO',   color:'#1A4A4A', title:'2 Artículos IA — Chile',                                start:'2026-05-28', end:'2026-06-08', p:'cl',   i:'alto', id:'t14' },
+    { cat:'SEO',   color:'#1A4A4A', title:'Optimización imágenes y multimedia',                    start:'2026-06-05', end:'2026-06-08', p:'all',  i:'med',  id:'t15' },
+    { cat:'SEO',   color:'#1A4A4A', title:'Programación de Contenido',                             start:'2026-06-05', end:'2026-06-09', p:'all',  i:'alto', id:'t16' },
+    { cat:'SEO',   color:'#1A4A4A', title:'Monitoreo Google Search Console y Analytics',           start:'2026-06-08', end:'2026-07-09', p:'all',  i:'med',  id:'t17' },
+    { cat:'SEM',   color:'#3A1A5C', title:'Definición objetivos y segmentación de audiencia',      start:'2026-06-01', end:'2026-06-08', p:'all',  i:'alto', id:'t18' },
+    { cat:'SEM',   color:'#3A1A5C', title:'Creación campañas Google Ads',                          start:'2026-06-08', end:'2026-06-15', p:'all',  i:'alto', id:'t19' },
+    { cat:'SEM',   color:'#3A1A5C', title:'Redacción de anuncios atractivos',                      start:'2026-06-08', end:'2026-06-15', p:'all',  i:'alto', id:'t20' },
+    { cat:'SEM',   color:'#3A1A5C', title:'Redireccionar presupuesto META → Google Ads',           start:'2026-06-08', end:'2026-06-15', p:'all',  i:'alto', id:'t21' },
+    { cat:'SEM',   color:'#3A1A5C', title:'Configuración de pujas y presupuesto',                  start:'2026-06-08', end:'2026-06-15', p:'all',  i:'alto', id:'t22' },
+    { cat:'SEM',   color:'#3A1A5C', title:'Creación Landing Nueva Lógica',                         start:'2026-06-08', end:'2026-06-12', p:'all',  i:'alto', id:'t23' },
+    { cat:'SEM',   color:'#3A1A5C', title:'Optimización de landing pages',                         start:'2026-06-14', end:'2026-06-17', p:'all',  i:'alto', id:'t24' },
+    { cat:'EMAIL', color:'#5C451A', title:'Envío 1 — SRC Mailing Perú',                            start:'2026-06-03', end:'2026-06-05', p:'pe',   i:'med',  id:'t25' },
+    { cat:'EMAIL', color:'#5C451A', title:'Envío 2 — SRC Mailing Perú',                            start:'2026-06-08', end:'2026-06-10', p:'pe',   i:'med',  id:'t26' },
+    { cat:'EMAIL', color:'#5C451A', title:'Envío 3 — SRC Mailing Perú',                            start:'2026-06-10', end:'2026-06-13', p:'pe',   i:'med',  id:'t27' }
+  ];
+
+  var CATS_ORDER = ['IA','CONT','SCORE','SEO','SEM','EMAIL'];
+  var CAT_LABELS = { IA:'IA', CONT:'Contenidos', SCORE:'Score Leads', SEO:'SEO', SEM:'SEM', EMAIL:'Email Marketing' };
+
+  var TODAY = new Date(2026, 5, 1); // June 1 2026 (month is 0-indexed)
+
+  /* ─── helpers ─────────────────────────────────────── */
+  function parseDate(s) {
+    var p = s.split('-');
+    return new Date(+p[0], +p[1]-1, +p[2]);
+  }
+  function daysBetween(a, b) {
+    return Math.round((b - a) / 86400000);
+  }
+  function fmtDate(d) {
+    var months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    return d.getDate() + ' ' + months[d.getMonth()];
+  }
+
+  /* ─── compute project span ─────────────────────────── */
+  var minDate = new Date(2099,0,1), maxDate = new Date(2000,0,1);
+  TASKS.forEach(function(t) {
+    var s = parseDate(t.start), e = parseDate(t.end);
+    if (s < minDate) minDate = s;
+    if (e > maxDate) maxDate = e;
+  });
+  // extend 3 days each side for visual padding
+  var spanStart = new Date(minDate); spanStart.setDate(spanStart.getDate() - 2);
+  var spanEnd   = new Date(maxDate); spanEnd.setDate(spanEnd.getDate() + 3);
+  var totalDays = daysBetween(spanStart, spanEnd);
+
+  /* ─── task status ─────────────────────────────────── */
+  function getStatus(task) {
+    var taskEl = document.getElementById(task.id) ||
+                 document.querySelector('[data-tid="' + task.id + '"]');
+    var isDone = taskEl ? taskEl.classList.contains('done') : false;
+    if (isDone) return 'done';
+    var s = parseDate(task.start), e = parseDate(task.end);
+    if (TODAY < s) return 'future';
+    if (TODAY > e) return 'late';
+    return 'ontrack';
+  }
+
+  /* ─── sync done state from checklist ────────────────── */
+  window.syncDoneFromChecklistGlobal = syncDoneFromChecklist;
+  function syncDoneFromChecklist() {
+    // checklist tasks have data-tid set by us; link by index
+    TASKS.forEach(function(task, idx) {
+      // find by order in .task elements
+      var allTasks = document.querySelectorAll('#checklist-panel .task');
+      if (allTasks[idx]) {
+        if (allTasks[idx].classList.contains('done')) {
+          task._done = true;
+        } else {
+          task._done = false;
+        }
+      }
+    });
+  }
+
+  function getStatusFinal(task) {
+    if (task._done) return 'done';
+    var s = parseDate(task.start), e = parseDate(task.end);
+    if (TODAY < s) return 'future';
+    if (TODAY > e) return 'late';
+    return 'ontrack';
+  }
+
+  /* ─── month blocks ─────────────────────────────────── */
+  function buildMonthBlocks() {
+    var months = [];
+    var cursor = new Date(spanStart.getFullYear(), spanStart.getMonth(), 1);
+    while (cursor <= spanEnd) {
+      var mStart = new Date(Math.max(cursor, spanStart));
+      var nextMonth = new Date(cursor.getFullYear(), cursor.getMonth()+1, 1);
+      var mEnd = new Date(Math.min(nextMonth-1, spanEnd));
+      var days = daysBetween(mStart, mEnd) + 1;
+      var names = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      months.push({ name: names[cursor.getMonth()], days: days, start: mStart, idx: months.length });
+      cursor = nextMonth;
+    }
+    return months;
+  }
+
+  /* ─── build gantt DOM ─────────────────────────────── */
+  function buildGantt() {
+    syncDoneFromChecklist();
+    var months = buildMonthBlocks();
+
+    // compute counters
+    var counts = { done:0, ontrack:0, late:0, future:0 };
+    TASKS.forEach(function(t) { counts[getStatusFinal(t)]++; });
+
+    var html = '';
+
+    // header row
+    html += '<div class="gantt-header-row">';
+    html += '<div class="gantt-title">Gantt — Horizonte 1 · Mayo–Junio 2026</div>';
+    html += '<div class="gantt-legend">';
+    html += '<div class="gleg"><div class="gleg-dot gleg-done"></div>Completada</div>';
+    html += '<div class="gleg"><div class="gleg-dot gleg-ontrack"></div>En curso</div>';
+    html += '<div class="gleg"><div class="gleg-dot gleg-late"></div>Atrasada</div>';
+    html += '<div class="gleg"><div class="gleg-dot gleg-future"></div>Pendiente</div>';
+    html += '<div class="gleg"><div class="gleg-dot gleg-today"></div>Hoy</div>';
+    html += '</div></div>';
+
+    // status bar
+    var todayMonths=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    html += '<div class="status-bar">';
+    html += '<span class="status-chip chip-today">Hoy: ' + TODAY.getDate() + ' ' + todayMonths[TODAY.getMonth()] + ' 2026</span>';
+    html += '<span class="status-chip chip-done">' + counts.done + ' completadas</span>';
+    html += '<span class="status-chip chip-ontrack">' + counts.ontrack + ' en curso</span>';
+    html += '<span class="status-chip chip-late">' + counts.late + ' atrasadas</span>';
+    html += '<span class="status-chip chip-future">' + counts.future + ' pendientes</span>';
+    html += '</div>';
+
+    // grid
+    html += '<div class="gantt-grid" id="gantt-grid">';
+
+    // month header
+    html += '<div class="gantt-months">';
+    html += '<div class="gantt-task-col">Tarea</div>';
+    html += '<div class="gantt-timeline-header">';
+    months.forEach(function(m, idx) {
+      var pct = (m.days / totalDays * 100).toFixed(4);
+      html += '<div class="gantt-month-block" style="width:' + pct + '%;' + (idx%2===0 ? 'background:rgba(0,0,0,0.025)' : '') + '">' + m.name + '</div>';
+    });
+    html += '</div></div>'; // timeline-header + months
+
+    // today pct
+    var todayPct = (daysBetween(spanStart, TODAY) / totalDays * 100).toFixed(4);
+    var showToday = TODAY >= spanStart && TODAY <= spanEnd;
+
+    // rows by category
+    CATS_ORDER.forEach(function(cat) {
+      var catTasks = TASKS.filter(function(t){ return t.cat === cat; });
+      if (!catTasks.length) return;
+
+      // cat header
+      html += '<div class="gantt-cat-row">';
+      html += '<div class="gantt-cat-label"><div class="gantt-cat-dot" style="background:' + catTasks[0].color + '"></div>' + CAT_LABELS[cat] + '</div>';
+      html += '<div class="gantt-cat-spacer"></div></div>';
+
+      catTasks.forEach(function(task) {
+        var status = getStatusFinal(task);
+        var isDoneRow = status === 'done';
+        var s = parseDate(task.start), e = parseDate(task.end);
+        var left  = (daysBetween(spanStart, s) / totalDays * 100).toFixed(4);
+        var width = ((daysBetween(s, e)+1) / totalDays * 100).toFixed(4);
+        width = Math.max(parseFloat(width), 0.8).toFixed(4);
+
+        var barClass = 'bar-' + status;
+        var statusLabel = { done:'Completada', ontrack:'En curso', late:'Atrasada', future:'Pendiente' }[status];
+        var statusClass = 'tt-' + status;
+
+        html += '<div class="gantt-row' + (isDoneRow ? ' done-row' : '') + '" data-task-id="' + task.id + '">';
+        html += '<div class="gantt-row-label" onclick="ganttToggleDone(\'' + task.id + '\')" title="Clic para marcar completada">' + task.title + '</div>';
+        html += '<div class="gantt-timeline" style="position:relative;min-height:38px;">';
+
+        // month bg stripes
+        months.forEach(function(m, mi) {
+          var ml = (daysBetween(spanStart, m.start) / totalDays * 100).toFixed(4);
+          var mw = (m.days / totalDays * 100).toFixed(4);
+          if (mi%2===0) {
+            html += '<div style="position:absolute;top:0;bottom:0;left:' + ml + '%;width:' + mw + '%;background:rgba(0,0,0,0.012);pointer-events:none;z-index:0;"></div>';
+          }
+        });
+
+        // today line
+        if (showToday) {
+          html += '<div class="today-line" style="left:' + todayPct + '%;"></div>';
+        }
+
+        // bar
+        html += '<div class="gantt-bar ' + barClass + '" style="left:' + left + '%;width:' + width + '%;"';
+        html += ' data-id="' + task.id + '"';
+        html += ' data-title="' + task.title.replace(/"/g,'&quot;') + '"';
+        html += ' data-start="' + fmtDate(s) + '"';
+        html += ' data-end="' + fmtDate(e) + '"';
+        html += ' data-status="' + statusLabel + '"';
+        html += ' data-status-class="' + statusClass + '"';
+        html += ' data-imp="' + task.i + '"';
+        html += ' data-cat="' + CAT_LABELS[task.cat] + '"';
+        html += ' onmouseenter="showGanttTT(event,this)" onmouseleave="hideGanttTT()"';
+        html += ' onclick="ganttToggleDone(\'' + task.id + '\')">';
+        html += '</div>';
+
+        html += '</div>'; // timeline
+        html += '</div>'; // gantt-row
+      });
+    });
+
+    html += '</div>'; // gantt-grid
+
+    // click-hint
+    html += '<p style="font-family:\'DM Mono\',monospace;font-size:10.5px;color:var(--muted);margin-top:12px;text-align:right;">Clic en una barra o en el nombre para marcar como completada · sincronizado con el checklist</p>';
+
+    document.getElementById('gantt-panel-inner').innerHTML = html;
+  }
+
+  /* ─── tooltip ─────────────────────────────────────── */
+  window.showGanttTT = function(e, el) {
+    var tt = document.getElementById('gtt');
+    var statusClass = el.dataset.statusClass;
+    tt.innerHTML =
+      '<div class="tt-title">' + el.dataset.title + '</div>' +
+      '<div class="tt-row"><span>Inicio</span><span>' + el.dataset.start + '</span></div>' +
+      '<div class="tt-row"><span>Fin</span><span>' + el.dataset.end + '</span></div>' +
+      '<div class="tt-row"><span>Categoría</span><span>' + el.dataset.cat + '</span></div>' +
+      '<div class="tt-row"><span>Impacto</span><span>' + el.dataset.imp + '</span></div>' +
+      '<div class="tt-row"><span>Estado</span><span class="tt-status ' + statusClass + '">' + el.dataset.status + '</span></div>';
+    tt.classList.add('visible');
+    moveGanttTT(e);
+  };
+  window.hideGanttTT = function() {
+    document.getElementById('gtt').classList.remove('visible');
+  };
+  function moveGanttTT(e) {
+    var tt = document.getElementById('gtt');
+    var x = e.clientX + 14, y = e.clientY - 10;
+    if (x + 270 > window.innerWidth) x = e.clientX - 280;
+    if (y + 160 > window.innerHeight) y = e.clientY - 165;
+    tt.style.left = x + 'px';
+    tt.style.top  = y + 'px';
+  }
+  document.addEventListener('mousemove', function(e) {
+    if (document.getElementById('gtt').classList.contains('visible')) moveGanttTT(e);
+  });
+
+  /* ─── toggle done (gantt side → syncs checklist) ───── */
+  window.ganttToggleDone = function(taskId) {
+    var idx = TASKS.findIndex(function(t){ return t.id === taskId; });
+    if (idx < 0) return;
+    // toggle internal state
+    TASKS[idx]._done = !TASKS[idx]._done;
+    // sync checklist DOM
+    var allTasks = document.querySelectorAll('#checklist-panel .task');
+    if (allTasks[idx]) {
+      if (TASKS[idx]._done) {
+        allTasks[idx].classList.add('done');
+        allTasks[idx].querySelector('.cb').classList.add('ck');
+      } else {
+        allTasks[idx].classList.remove('done');
+        allTasks[idx].querySelector('.cb').classList.remove('ck');
+      }
+      updateAll(); // refresh checklist counters
+    }
+    buildGantt(); // rebuild gantt
+    if (window.saveProgressGlobal) window.saveProgressGlobal();
+  };
+
+  /* ─── tabs ─────────────────────────────────────────── */
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      var panel = document.getElementById(btn.dataset.tab + '-panel');
+      panel.classList.add('active');
+      if (btn.dataset.tab === 'gantt') {
+        syncDoneFromChecklist();
+        buildGantt();
+      }
+    });
+  });
+
+  /* ─── also rebuild gantt when a checklist task is toggled ─── */
+  var origToggleTask = window.toggleTask;
+  window.toggleTask = function(el) {
+    origToggleTask(el);
+    // sync _done flags
+    syncDoneFromChecklist();
+    // if gantt panel is visible, rebuild
+    if (document.getElementById('gantt-panel').classList.contains('active')) {
+      buildGantt();
+    }
+  };
+
+  /* initial sync */
+  syncDoneFromChecklist();
+  TASKS.findIndex; // ensure Array.findIndex polyfill awareness
+  if (!Array.prototype.findIndex) {
+    Array.prototype.findIndex = function(cb) {
+      for (var i=0;i<this.length;i++) { if(cb(this[i],i,this)) return i; }
+      return -1;
+    };
+  }
+
+})();
+
+
+/* ══════════════════════════════════════════════════════
+   PASSWORD + localStorage PERSISTENCE
+══════════════════════════════════════════════════════ */
+(function() {
+  /* ── CONFIG — change PASSWORD here ───────────────── */
+  var PASSWORD     = 'equipo2026';      // ← CAMBIA ESTA CONTRASEÑA
+  var STORAGE_KEY  = 'checklist_h1_v1';
+  var SESSION_KEY  = 'checklist_auth';
+
+  /* ── unlock ────────────────────────────────────────── */
+  function tryUnlock(pwd) {
+    if (pwd === PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, '1');
+      document.getElementById('lock-screen').style.display = 'none';
+      document.getElementById('app-content').style.display = 'block';
+      restoreProgress();
+      return true;
+    }
+    return false;
+  }
+
+  function checkSession() {
+    if (sessionStorage.getItem(SESSION_KEY) === '1') {
+      document.getElementById('lock-screen').style.display = 'none';
+      document.getElementById('app-content').style.display = 'block';
+      restoreProgress();
+    }
+  }
+
+  /* ── lock screen events ────────────────────────────── */
+  var inp = document.getElementById('lock-input');
+  var btn = document.getElementById('lock-btn');
+  var err = document.getElementById('lock-error');
+  var tog = document.getElementById('lock-toggle');
+
+  btn.addEventListener('click', function() {
+    if (!tryUnlock(inp.value.trim())) {
+      err.textContent = 'Contraseña incorrecta';
+      inp.classList.add('shake');
+      inp.value = '';
+      setTimeout(function() {
+        inp.classList.remove('shake');
+        err.textContent = '';
+      }, 1000);
+    }
+  });
+
+  inp.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') btn.click();
+  });
+
+  tog.addEventListener('click', function() {
+    if (inp.type === 'password') { inp.type = 'text'; tog.textContent = '🙈'; }
+    else { inp.type = 'password'; tog.textContent = '👁'; }
+  });
+
+  /* ── localStorage: save progress ───────────────────── */
+  function saveProgress() {
+    var state = {};
+    document.querySelectorAll('#checklist-panel .task').forEach(function(el, i) {
+      state['t' + i] = el.classList.contains('done') ? 1 : 0;
+    });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+  }
+
+  function restoreProgress() {
+    var raw;
+    try { raw = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+    if (!raw) return;
+    var state;
+    try { state = JSON.parse(raw); } catch(e) { return; }
+    document.querySelectorAll('#checklist-panel .task').forEach(function(el, i) {
+      if (state['t' + i] === 1) {
+        el.classList.add('done');
+        el.querySelector('.cb').classList.add('ck');
+      }
+    });
+    // sync gantt internal state
+    if (window.syncDoneFromChecklistGlobal) window.syncDoneFromChecklistGlobal();
+    updateAll();
+  }
+
+  /* ── hook into toggleTask to auto-save ─────────────── */
+  var _origToggle = window.toggleTask;
+  window.toggleTask = function(el) {
+    _origToggle(el);
+    saveProgress();
+  };
+
+  /* also expose saveProgress globally for gantt toggle */
+  window.saveProgressGlobal = saveProgress;
+
+  /* ── init ─────────────────────────────────────────── */
+  checkSession();
+})();
+
+</script>
+</div><!-- /app-content -->
+</body>
+</html>
