@@ -891,6 +891,31 @@ body {
 }
 #app-content { display: none; }
 
+
+/* ── SYNC TOAST ─────────────────────── */
+#sync-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  background: var(--ink);
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: 99px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  z-index: 9000;
+}
+#sync-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 </style>
 </head>
 <body>
@@ -913,6 +938,8 @@ body {
 
 <!-- APP CONTENT -->
 <div id="app-content">
+<!-- SYNC TOAST -->
+<div id="sync-toast"></div>
 
 
 <!-- HERO -->
@@ -1726,7 +1753,6 @@ body {
       updateAll(); // refresh checklist counters
     }
     buildGantt(); // rebuild gantt
-    if (window.saveProgressGlobal) window.saveProgressGlobal();
   };
 
   /* ─── tabs ─────────────────────────────────────────── */
@@ -1770,98 +1796,237 @@ body {
 
 
 /* ══════════════════════════════════════════════════════
-   PASSWORD + localStorage PERSISTENCE
+   PASSWORD + SUPABASE REALTIME SYNC
 ══════════════════════════════════════════════════════ */
 (function() {
-  /* ── CONFIG — change PASSWORD here ───────────────── */
-  var PASSWORD     = 'equipo2026';      // ← CAMBIA ESTA CONTRASEÑA
-  var STORAGE_KEY  = 'checklist_h1_v1';
-  var SESSION_KEY  = 'checklist_auth';
 
-  /* ── unlock ────────────────────────────────────────── */
-  function tryUnlock(pwd) {
-    if (pwd === PASSWORD) {
-      sessionStorage.setItem(SESSION_KEY, '1');
-      document.getElementById('lock-screen').style.display = 'none';
-      document.getElementById('app-content').style.display = 'block';
-      restoreProgress();
-      return true;
+  /* ── CONFIG ─────────────────────────────────────── */
+  var PASSWORD    = 'equipo2026';
+  var SESSION_KEY = 'checklist_auth';
+  var SB_URL      = 'https://pedhdyzlpnfansqioanf.supabase.co';
+  var SB_KEY      = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZGhkeXpscG5mYW5zcWlvYW5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMzEwOTcsImV4cCI6MjA5NTkwNzA5N30.gfMw-2MbtcbiQk1C4wBOZTJq9Ht9n6jXdkckb1Q9ZGw';
+  var TABLE       = 'checklist_state';
+  var _syncing    = false;   // guard against echo loops
+
+  /* ── Supabase REST helpers ───────────────────────── */
+  function sbHeaders() {
+    return {
+      'Content-Type':  'application/json',
+      'apikey':        SB_KEY,
+      'Authorization': 'Bearer ' + SB_KEY,
+      'Prefer':        'return=minimal'
+    };
+  }
+
+  function sbFetch(path, opts) {
+    return fetch(SB_URL + '/rest/v1/' + path, Object.assign({ headers: sbHeaders() }, opts));
+  }
+
+  /* load all rows */
+  function loadState(cb) {
+    sbFetch(TABLE + '?select=id,done&order=id')
+      .then(function(r) { return r.json(); })
+      .then(cb)
+      .catch(function(e) { console.warn('Supabase load error', e); });
+  }
+
+  /* upsert a single task */
+  function upsertTask(id, done) {
+    sbFetch(TABLE + '?id=eq.' + id, {
+      method: 'PATCH',
+      body: JSON.stringify({ done: done, updated_at: new Date().toISOString() })
+    }).catch(function(e) { console.warn('Supabase upsert error', e); });
+  }
+
+  /* ── apply state rows to DOM ─────────────────────── */
+  function applyState(rows) {
+    if (!rows || !rows.length) return;
+    var map = {};
+    rows.forEach(function(r) { map[r.id] = r.done; });
+    document.querySelectorAll('#checklist-panel .task').forEach(function(el, i) {
+      var id = 't' + i;
+      if (map[id] === undefined) return;
+      if (map[id]) {
+        el.classList.add('done');
+        el.querySelector('.cb').classList.add('ck');
+      } else {
+        el.classList.remove('done');
+        el.querySelector('.cb').classList.remove('ck');
+      }
+    });
+    if (window.syncDoneFromChecklistGlobal) window.syncDoneFromChecklistGlobal();
+    updateAll();
+    if (document.getElementById('gantt-panel').classList.contains('active')) {
+      buildGantt();
     }
-    return false;
+  }
+
+  /* ── Supabase Realtime (WebSocket) ───────────────── */
+  var ws = null;
+  var wsReady = false;
+  var wsQueue = [];
+  var heartbeat = null;
+
+  function connectRealtime() {
+    var wsUrl = SB_URL.replace('https://', 'wss://').replace('http://', 'ws://')
+                + '/realtime/v1/websocket?apikey=' + SB_KEY + '&vsn=1.0.0';
+    try {
+      ws = new WebSocket(wsUrl);
+    } catch(e) {
+      console.warn('WS connect failed', e);
+      return;
+    }
+
+    ws.onopen = function() {
+      wsReady = true;
+      /* join channel */
+      ws.send(JSON.stringify({
+        topic:   'realtime:public:' + TABLE,
+        event:   'phx_join',
+        payload: { config: { broadcast: { self: false }, presence: { key: '' }, postgres_changes: [{ event: '*', schema: 'public', table: TABLE }] } },
+        ref:     '1'
+      }));
+      /* heartbeat every 25s */
+      heartbeat = setInterval(function() {
+        ws.send(JSON.stringify({ topic: 'phoenix', event: 'heartbeat', payload: {}, ref: '0' }));
+      }, 25000);
+      wsQueue.forEach(function(m) { ws.send(m); });
+      wsQueue = [];
+    };
+
+    ws.onmessage = function(evt) {
+      var msg;
+      try { msg = JSON.parse(evt.data); } catch(e) { return; }
+      if (!msg.payload) return;
+      var rec = msg.payload.record;
+      if (!rec) return;
+      if (_syncing) return;   /* ignore our own writes */
+      /* apply just this one row */
+      var id = rec.id;
+      var done = rec.done;
+      document.querySelectorAll('#checklist-panel .task').forEach(function(el, i) {
+        if ('t' + i === id) {
+          if (done) { el.classList.add('done'); el.querySelector('.cb').classList.add('ck'); }
+          else       { el.classList.remove('done'); el.querySelector('.cb').classList.remove('ck'); }
+        }
+      });
+      if (window.syncDoneFromChecklistGlobal) window.syncDoneFromChecklistGlobal();
+      updateAll();
+      if (document.getElementById('gantt-panel').classList.contains('active')) buildGantt();
+      showSyncToast('Actualizado por otro miembro ↗');
+    };
+
+    ws.onerror = function() { console.warn('WS error — polling fallback active'); };
+    ws.onclose = function() {
+      wsReady = false;
+      clearInterval(heartbeat);
+      /* reconnect after 4s */
+      setTimeout(connectRealtime, 4000);
+    };
+  }
+
+  /* polling fallback (every 8s) in case WS is blocked */
+  var lastPollHash = '';
+  function pollFallback() {
+    loadState(function(rows) {
+      var hash = JSON.stringify(rows);
+      if (hash !== lastPollHash) {
+        lastPollHash = hash;
+        if (!_syncing) {
+          applyState(rows);
+          if (lastPollHash !== '') showSyncToast('Actualizado por otro miembro ↗');
+        }
+      }
+    });
+  }
+
+  /* ── sync toast ──────────────────────────────────── */
+  function showSyncToast(msg) {
+    var t = document.getElementById('sync-toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('visible');
+    clearTimeout(t._tid);
+    t._tid = setTimeout(function() { t.classList.remove('visible'); }, 2800);
+  }
+
+  /* ── hook into toggleTask ────────────────────────── */
+  var _origToggle = window.toggleTask;
+  window.toggleTask = function(el) {
+    _origToggle(el);
+    /* find task index */
+    var tasks = document.querySelectorAll('#checklist-panel .task');
+    var idx = Array.prototype.indexOf.call(tasks, el);
+    if (idx >= 0) {
+      _syncing = true;
+      upsertTask('t' + idx, el.classList.contains('done'));
+      setTimeout(function() { _syncing = false; }, 1500);
+    }
+    showSyncToast('Guardado ✓');
+  };
+
+  /* also hook ganttToggleDone */
+  var _origGanttToggle = window.ganttToggleDone;
+  window.ganttToggleDone = function(taskId) {
+    _origGanttToggle(taskId);
+    var idx = parseInt(taskId.replace('t',''), 10);
+    var tasks = document.querySelectorAll('#checklist-panel .task');
+    if (tasks[idx]) {
+      _syncing = true;
+      upsertTask(taskId, tasks[idx].classList.contains('done'));
+      setTimeout(function() { _syncing = false; }, 1500);
+    }
+    showSyncToast('Guardado ✓');
+  };
+
+  /* ── lock screen ─────────────────────────────────── */
+  function unlock() {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    document.getElementById('lock-screen').style.display = 'none';
+    document.getElementById('app-content').style.display = 'block';
+    /* load initial state then connect realtime */
+    loadState(function(rows) {
+      lastPollHash = JSON.stringify(rows);
+      applyState(rows);
+      connectRealtime();
+      setInterval(pollFallback, 8000);
+    });
   }
 
   function checkSession() {
     if (sessionStorage.getItem(SESSION_KEY) === '1') {
       document.getElementById('lock-screen').style.display = 'none';
       document.getElementById('app-content').style.display = 'block';
-      restoreProgress();
+      loadState(function(rows) {
+        lastPollHash = JSON.stringify(rows);
+        applyState(rows);
+        connectRealtime();
+        setInterval(pollFallback, 8000);
+      });
     }
   }
 
-  /* ── lock screen events ────────────────────────────── */
   var inp = document.getElementById('lock-input');
   var btn = document.getElementById('lock-btn');
   var err = document.getElementById('lock-error');
   var tog = document.getElementById('lock-toggle');
 
   btn.addEventListener('click', function() {
-    if (!tryUnlock(inp.value.trim())) {
+    if (inp.value.trim() === PASSWORD) {
+      unlock();
+    } else {
       err.textContent = 'Contraseña incorrecta';
       inp.classList.add('shake');
       inp.value = '';
-      setTimeout(function() {
-        inp.classList.remove('shake');
-        err.textContent = '';
-      }, 1000);
+      setTimeout(function() { inp.classList.remove('shake'); err.textContent = ''; }, 1000);
     }
   });
-
-  inp.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') btn.click();
-  });
-
+  inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') btn.click(); });
   tog.addEventListener('click', function() {
-    if (inp.type === 'password') { inp.type = 'text'; tog.textContent = '🙈'; }
-    else { inp.type = 'password'; tog.textContent = '👁'; }
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    tog.textContent = inp.type === 'password' ? '👁' : '🙈';
   });
 
-  /* ── localStorage: save progress ───────────────────── */
-  function saveProgress() {
-    var state = {};
-    document.querySelectorAll('#checklist-panel .task').forEach(function(el, i) {
-      state['t' + i] = el.classList.contains('done') ? 1 : 0;
-    });
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
-  }
-
-  function restoreProgress() {
-    var raw;
-    try { raw = localStorage.getItem(STORAGE_KEY); } catch(e) {}
-    if (!raw) return;
-    var state;
-    try { state = JSON.parse(raw); } catch(e) { return; }
-    document.querySelectorAll('#checklist-panel .task').forEach(function(el, i) {
-      if (state['t' + i] === 1) {
-        el.classList.add('done');
-        el.querySelector('.cb').classList.add('ck');
-      }
-    });
-    // sync gantt internal state
-    if (window.syncDoneFromChecklistGlobal) window.syncDoneFromChecklistGlobal();
-    updateAll();
-  }
-
-  /* ── hook into toggleTask to auto-save ─────────────── */
-  var _origToggle = window.toggleTask;
-  window.toggleTask = function(el) {
-    _origToggle(el);
-    saveProgress();
-  };
-
-  /* also expose saveProgress globally for gantt toggle */
-  window.saveProgressGlobal = saveProgress;
-
-  /* ── init ─────────────────────────────────────────── */
   checkSession();
 })();
 
